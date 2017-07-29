@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= title%>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div>
+        <%= msg%>
+    </div>
+
+    <div>
+      <button type="button" id="back">Back</button>
+    </div>
+
+    <script type="text/javascript" src="javascripts/jquery-1.9.1.min.js"></script>
+    <script>
+        $(function(){
+            $('#back').click(function(){
+                location.href='/';
+            });
+        });
+    </script>
+  </body>
+</html>

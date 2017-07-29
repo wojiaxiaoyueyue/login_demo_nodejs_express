@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <%= title %>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <form method="POST">
+        <div class="row">
+        <input type="text" placeholder="Please input your userName" id="userName" required/>
+        </div>
+        <div class="row">
+            <input type="password" placeholder="Please input your passwd" id="passwd"/>
+        </div>
+
+        <div class="row">
+            <input type="password" placeholder="Please input your passwd again" id="repasswd"/>
+        </div>
+
+        <button type="button" id="register">Register</button>
+
+        <button type="button" id="back"> Back </button>
+    </form>
+
+    <script type="text/javascript" src="javascripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#register").click(function(){
+                var name = $('#userName').val();
+                var passwd = $('#passwd').val();
+                var repasswd = $('#repasswd').val();
+                
+                if(passwd != repasswd || passwd == "")
+                {
+                    alert('Please ensure the passwd and the repasswd are the same');
+                    $('#passwd').val()='';
+                    $('#repasswd').val()='';
+                    $('#passwd').onfoucs();
+                }
+                var data = {"userName" : name, "passwd" :passwd};
+                $.ajax({
+                    url:'/Register',
+                    method: 'POST',
+                    data: data,
+                    success : function(data ,status){
+                        if(status == 'success'){
+                            location.href='/afterLogin';
+                        }
+                    },
+                    error: function(data, status){
+                        if(status == 'error'){
+                            alert('the userName has existed, please try again');
+                            $('#userName').val()='';
+                            $('#passwd').val()='';
+                            $('#repasswd').val()='';
+                           $('#userName').onfoucs();
+
+                        }
+                    }
+                });
+                
+            });
+
+            $('#back').click(function(){
+                history.back();
+            });
+        });
+    </script>
+  </body>
+</html>

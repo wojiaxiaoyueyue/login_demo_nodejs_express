@@ -1,0 +1,31 @@
+body{
+    background:  url('../images/bg.jpg');
+    background-size: cover;
+}
+
+h2{
+    font-size: 50px;
+    font-family: monospace;
+    text-align: center;
+}
+
+input{
+    text-align: left
+
+}
+
+button{
+    text-align: left
+}
+
+div #userNameDiv{
+    text-align: center;
+}
+
+div #passwdDiv{
+    text-align: center;
+}
+
+div #submit{
+    text-align: center;
+}
